@@ -1,45 +1,45 @@
 version: "3.3"
 services: 
   redis:
-    image: c5355f8853e4
+    image: a55fbf438dfd
     ports:
       - 6379:6379
     hostname: localhost
     volumes: 
-      - "/myredis/conf/redis.conf:/usr/local/etc/redis/redis.conf"
+      - "/tmp/docker/myredis/conf/redis.conf:/usr/local/etc/redis/redis.conf"
   rabbitmq: 
-    image: df0ee1f2343b
+    image: 5c0e9749ca78
     ports: 
       - 15672:15672
       - 5672:5672
     hostname: localhost
     volumes: 
-      - "/docker-data/rabbitmq1/data:/var/lib/rabbitmq"
+      - "/tmp/docker/docker-data/rabbitmq1/data:/var/lib/rabbitmq"
   mysql: 
-    image: 5195076672a7
+    image: d72169616e20
     ports: 
       - 3306:3306
     hostname: localhost
     volumes:
-      - "/my/own/datadir:/var/lib/mysql"
+      - "/tmp/docker/my/own/datadir:/var/lib/mysql"
     environment: 
       MYSQL_ROOT_PASSWORD: Raja@123
   kafka: 
-    image: a9e0a5b8b15e
+    image: wurstmeister/kafka
     ports: 
       - 2181:2181
       - 9092:9092
     hostname: localhost
     volumes: 
-      - "/docker-data/kafka/data:/var/lib/kafka"
+      - "/tmp/docker/docker-data/kafka/data:/var/lib/kafka"
 
   mongo: 
-    image: mongo
+    image: ed7f5dd724de
     ports: 
       - 27017:27017
     hostname: localhost
     volumes: 
-      - "/docker-data/kafka/data:/var/lib/mongo"
+      - "/tmp/docker/docker-data/kafka/data:/var/lib/mongo"
   elasticSearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:6.2.4
     container_name: elasticsearch
@@ -49,4 +49,4 @@ services:
       - 9300:9300
       - 5601:5601
     volumes: 
-      - "/usr/share/elasticsearch/data:/usr/local/etc/elasticsearch/data"
+      - "/tmp/docker/usr/share/elasticsearch/data:/usr/local/etc/elasticsearch/data"

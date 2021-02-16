@@ -1,0 +1,25 @@
+version: "3.3"
+services: 
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.10.1
+    container_name: elasticsearch
+    hostname: localhost
+    ports: 
+      - 9200:9200
+      - 9300:9300
+    volumes: 
+      - "/tmp/docker/usr/share/elasticsearch/data:/usr/local/etc/elasticsearch/data"
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.10.1
+    container_name: kibana
+    hostname: localhost
+    ports:
+      - 5601:5601
+    volumes: 
+      - "/tmp/docker/usr/share/elasticsearch/data:/usr/local/etc/kibana/data"
+  logstash:
+    image: docker.elastic.co/logstash/logstash:7.10.1
+    container_name: logstash
+    hostname: localhost
+    volumes: 
+      - "/tmp/docker/usr/share/elasticsearch/data:/usr/local/etc/logstash/data"
